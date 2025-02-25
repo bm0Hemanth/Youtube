@@ -4,12 +4,13 @@ import MainContainer from './MainContainer'
 
 const Body = () => {
     return (
-        <div>
-            Body
-            <SideBar/>
-            <MainContainer/>
-        </div>
+        <>
+            <div className=''>
+                <SideBar />
+                <MainContainer />
+            </div>
+        </>
     )
 }
 
-export default Body
+export default Body;

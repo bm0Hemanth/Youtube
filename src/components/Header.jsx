@@ -1,22 +1,55 @@
-import React from 'react'
+import React from "react";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/appSlice";
 
 const Header = () => {
-    return (
-        <div className='grid grid-flow-col  h-[56px] px-4 '>
-            <div className=' flex  h-[56px]  '>
-                <img className=' h-8' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEX///8jHyAgHB0MAAUOBQikpKQpJSadnZ309PUAAAAIAADZ2Nj8/Pyop6cYExXBwMAtKSpta2xpZ2draWpfXV7BwcGvrq77CGWbAAABG0lEQVR4nO3cwXKCMBQFUApFTQAVtf3/Ty3tsKhLZpKSxnP+4M57JCwyt2kAAAAAAAAAAAAAAADgFQ1TX4ZpyJJvvIXYlSGGecyQcI5v5Yi39AGHsHeqJyH9ovYljXAZ4qeEm9W/pc29pCHmOGma8R7iexky3RbLovbHMvR5bnwAAAAAAAAAANhkPJUhV77hcT2U4frI8mToI5zbUpzDJX3A06Hd+7neL22X/mHbpbDXl+mHeOz2DvUk9skT1j/D+r/DZYiVn6UvcB9+2/tnZpUrHgAAAAAAAAAAbDBMe5ftrXK17M619yZq2f1bGfpLp5JGmKWDtv6E9W9p/SfNz22xdxn7Kl/LbuW9+gAAAAAAAAAAAAAAAPCffAHLSDTi5JU+gwAAAABJRU5ErkJggg=="
-                    alt="logo" />
-                <img className='h-8 object-contain' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1280px-YouTube_Logo_2017.svg.png" alt="logo" />
-            </div>
-            <div className='h-8'>
-                <input type="text" placeholder="Search" />
-                <button><img className='h-8' src="https://icons.veryicon.com/png/o/miscellaneous/bitisland-world/magnifier-40.png" alt="" /></button>
-            </div>
-            <div>
-                <img className='h-8' src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" alt="user icon" />
-            </div>
-        </div>
-    )
-}
+  const dispatch = useDispatch();
+
+  return (
+    <div className="grid grid-flow-col w-screen h-[56px] fixed bg-white border-b">
+      {/* Left - Menu & Logo */}
+      <div className="col-span-1 flex justify-center items-center w-[169px] h-[56px]">
+        <img
+          onClick={() => dispatch(toggleMenu())} // Dispatch a single action
+          className="w-6 h-6 cursor-pointer"
+          src="https://cdn.iconscout.com/icon/free/png-256/free-hamburger-menu-icon-462145.png"
+          alt="menu icon"
+        />
+        <img
+          className="h-10 w-24 object-contain p-1"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/YouTube_2024.svg/1024px-YouTube_2024.svg.png"
+          alt="YouTube Logo"
+        />
+      </div>
+
+      {/* Center - Search Bar */}
+      <div className="col-span-10 flex justify-center items-center">
+        <input
+          className="w-1/2 h-10 border border-gray-400 rounded-l-full p-2"
+          type="text"
+          placeholder="Search"
+        />
+        <button className="h-10 border border-l-0 border-gray-400 rounded-r-full px-4">
+          🔍
+        </button>
+      </div>
+
+      {/* Right - Icons */}
+      <div className="flex col-span-1 w-[213px] h-[40px] justify-between items-center m-2">
+        <button className="font-bold">+ Create</button>
+        <img
+          className="h-8"
+          src="https://static-00.iconduck.com/assets.00/notification-icon-1842x2048-xr57og4y.png"
+          alt="notifications"
+        />
+        <img
+          className="h-8"
+          src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+          alt="user profile"
+        />
+      </div>
+    </div>
+  );
+};
 
 export default Header;
